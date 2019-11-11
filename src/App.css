@@ -1,1 +1,36 @@
+.App {
+    text-align: center;
+    max-width: 70%;
+    margin: 20px auto auto;
+}
+
+.app_header {
+    background-color: white;
+    margin: 5px 5px 10px 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #202020;
+    padding: 10px;
+    text-align: start;
+    color: #435257;
+    font-weight: bold;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app_header_text {
+    margin-right: 20px;
+}
+
+.app_geo_update_button {
+    background-color: #a7afb1;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+}
 
