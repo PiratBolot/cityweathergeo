@@ -34,3 +34,14 @@
     font-weight: bold;
 }
 
+.error_msg {
+    background-color: #efe17e;
+    margin: 5px 5px 10px 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #202020;
+    padding: 10px;
+    color: #435257;
+    font-weight: bold;
+}
+
+

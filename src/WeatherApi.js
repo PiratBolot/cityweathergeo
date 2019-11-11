@@ -43,7 +43,7 @@ const parseWeatherResponse = (res) => (
         {key: "Ветер", value: res.wind.speed + " м/с, " + degToCompass(res.wind.deg)},
         {key: "Давление", value: res.main.pressure + " hPa"},
         {key: "Влажность", value: res.main.humidity + " %"},
-        {key: "Координаты", value: res.coord.lat + ", " + res.coord.lon}
+        {key: "Координаты", value: "[" + res.coord.lat + ", " + res.coord.lon + "]"}
     ]
 );
 
