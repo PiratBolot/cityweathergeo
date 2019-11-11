@@ -1,28 +1,36 @@
 import React from "react";
-import {getWeatherByCoords, parseWeatherResponse} from "../WeatherApi";
+import {getWeatherByCoords, getWeatherByCityName, parseWeatherResponse} from "../WeatherApi";
 import './CurrentCity.css'
+import CircularSpinner from "../preloader/CircularSpinner";
 
 class CurrentCity extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { currentPosition: props.currentPosition };
+        this.state = {
+            currentPosition: props.currentPosition,
+            currentCity: props.currentCity,
+            loaded: false
+        };
     }
 
     async componentDidMount() {
-        let data = await getWeatherByCoords(this.state.currentPosition.coords);
+        let data;
+        if (this.state.currentCity) {
+            data = await getWeatherByCityName(this.state.currentCity);
+        } else {
+            data = await getWeatherByCoords(this.state.currentPosition.coords);
+        }
         let res = data.response;
-        // console.log(res);
-        // console.log(res.name);
         let parsedData = parseWeatherResponse(res);
-        this.setState({data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
-        // console.log(this.state.data.weather[0].icon);
+        // var answer = prompt('question', 'defaultAnswer');
+        this.setState({loaded: true, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
     }
 
 
     render = () => (
         <div className="weather_frame">
             {
-                this.state.data &&
+                this.state.loaded ?
                 <div className="weather_frame_now">
                     <div className="city_name">{this.state.city}</div>
                     <div className="date">{new Date().toDateString()}</div>
@@ -36,6 +44,10 @@ class CurrentCity extends React.Component {
                         <div className="weather_description">{this.state.data.weather[0].description}</div>
                     </div>
                 </div>
+                    :
+                    <div className="image-container-overlay">
+                        <CircularSpinner />
+                    </div>
             }
             {
                 this.state.parsedWeather ?

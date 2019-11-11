@@ -37,8 +37,8 @@
 }
 
 .weather_icon {
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 150px;
+    max-height: 150px;
     filter: drop-shadow(2px 4px 6px black);
     padding-right: 1px;
 }
@@ -58,7 +58,6 @@
     padding: 5px 10px;
     color: white;
     background-color: #a7afb1;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     margin: 5px 0;
     border-radius: 5px;
 }
@@ -75,6 +74,7 @@
 
 .date {
     font-weight: bold;
+    padding-top: 10px;
 }
 
 .weather_description {
