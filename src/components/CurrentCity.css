@@ -1,0 +1,84 @@
+.weather_frame {
+    display: flex;
+    flex-direction: row;
+    color: #738287;
+    background-color: white;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #202020;
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+.weather_frame_now {
+    flex-grow: 1;
+    padding: 0px 7px;
+}
+
+.wn_body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.city_name {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: start;
+}
+
+.weather_now {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 15px 15px 0px;
+}
+
+.weather_icon {
+    max-width: 100px;
+    max-height: 100px;
+    filter: drop-shadow(2px 4px 6px black);
+    padding-right: 1px;
+}
+
+.temperature_c {
+    font-size: 100px;
+}
+
+.wn_body {
+    padding: 0 10px;
+}
+
+.wn_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px 10px;
+    color: white;
+    background-color: #a7afb1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+.info_label {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.info_value {
+    font-weight: bold;
+    color: #435257;
+}
+
+.date {
+    font-weight: bold;
+}
+
+.weather_description {
+    text-align: start;
+    font-weight: bold;
+    padding: 0px 0px;
+}

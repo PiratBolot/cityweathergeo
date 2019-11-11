@@ -27,9 +27,9 @@ class App extends React.Component {
 
   render = () => (
       <div className="App">
-        <div className="App-header">
-          <div className="App-header-text">Погода здесь</div>
-          <button className="App-geo-" onClick={this.updateGeo}>Обновить геолокацию</button>
+        <div className="app_header">
+          <div className="app_header_text">Погода здесь</div>
+          <button className="app_geo_update_button" onClick={this.updateGeo}>Обновить геолокацию</button>
         </div>
           {this.state.currentPosition && <CurrentCity currentPosition={this.state.currentPosition} />}
       </div>
