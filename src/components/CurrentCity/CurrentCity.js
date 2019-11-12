@@ -32,7 +32,7 @@ class CurrentCity extends React.Component {
 
 
     render = () => (
-        <div className="weather_frame">
+        <div className="current_city">
             {
                 this.state.loaded ?
                 <div className="weather_frame_now">

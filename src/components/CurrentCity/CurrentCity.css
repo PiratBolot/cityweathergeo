@@ -1,4 +1,4 @@
-.weather_frame {
+.current_city {
     display: flex;
     flex-direction: row;
     color: #738287;
@@ -26,6 +26,7 @@
     font-size: 48px;
     font-weight: bold;
     text-align: start;
+    color: #435257;
 }
 
 .weather_now {

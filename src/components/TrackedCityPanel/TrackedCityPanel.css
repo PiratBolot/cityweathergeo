@@ -1,0 +1,55 @@
+.tracked_city {
+    margin-top: 12px;
+}
+
+.tracked_city_panel {
+    background-color: white;
+    margin: 10px 5px 5px 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 #202020;
+    padding: 10px;
+    text-align: start;
+    color: #435257;
+    font-weight: bold;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add_form {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.add_field {
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: #a7afb1;
+    border: none;
+    color: white;
+}
+
+.add_field::placeholder {
+    color: blanchedalmond;
+}
+
+.add_button {
+    background-color: #a7afb1;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.tracked_city_list {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+}
