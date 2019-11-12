@@ -13,7 +13,7 @@ const toJson = (promise) => (
     ).then(
         async (response) => {
             let json = await response.json();
-            return {status: response.status, response: json};
+            return {status: json.cod.toString(), response: json};
         }
     )
 );

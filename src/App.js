@@ -1,7 +1,11 @@
 import React from 'react';
 import './App.css';
 
+import Store from "./components/Store/Store";
+
 import CurrentCity from './components/CurrentCity/CurrentCity'
+import TrackedCity from "./components/TrackedCity/TrackedCity";
+import TrackedCityPanel from "./components/TrackedCityPanel/TrackedCityPanel";
 
 class App extends React.Component {
     constructor(props) {
@@ -19,16 +23,31 @@ class App extends React.Component {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
               (position) => {
+                  Store.dispatch({
+                      type: "updateError",
+                      data: {isError: false, errorMsg: ""}
+                  });
                   this.setState({currentPosition: position, isGeoAccepted: true, isError: false});
+                  console.log(Store.getState());
               },
               (e) => {
+                  Store.dispatch({
+                      type: "updateError",
+                      data: {isError: true, errorMsg: e.message}
+                  });
                   this.setState({errorMsg: e.message, isError: true,
                       isGeoAccepted: false});
+                  console.log(Store.getState());
               },
               {enableHighAccuracy: false, timeout: 20000, maximumAge: 0}
           );
       } else {
-          this.setState({errorMsg: "Геолокация не поддерживается вашим браузером", error: true});
+          Store.dispatch({
+              type: "updateError",
+              data: {isError: true, errorMsg: "Геолокация не поддерживается вашим браузером"}
+          });
+          this.setState({errorMsg: "Геолокация не поддерживается вашим браузером", isError: true});
+          console.log(Store.getState());
       }
 
   };
@@ -47,6 +66,7 @@ class App extends React.Component {
           {this.state.isError && <div className="error_msg">{this.state.errorMsg}</div>}
           {this.state.currentPosition && <CurrentCity currentPosition={this.state.currentPosition} />}
           {!this.state.isGeoAccepted && !this.state.currentPosition  && <CurrentCity currentCity={this.state.reserveCity} />}
+          <TrackedCityPanel />
       </div>
   )
 }
