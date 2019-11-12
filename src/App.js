@@ -9,10 +9,10 @@ class App extends React.Component {
         this.state = {
             currentPosition: null,
             isGeoAccepted: true,
-            currentCity: "Syktyvkar",
+            reserveCity: "Syktyvkar",
             isError: false
         };
-        console.log(this.state.currentPosition || !this.state.currentCity);
+        this.getGeoData = this.getGeoData.bind(this);
     }
 
   getGeoData = (e) => {
@@ -46,7 +46,7 @@ class App extends React.Component {
         </div>
           {this.state.isError && <div className="error_msg">{this.state.errorMsg}</div>}
           {this.state.currentPosition && <CurrentCity currentPosition={this.state.currentPosition} />}
-          {!this.state.isGeoAccepted && !this.state.currentPosition  && <CurrentCity currentCity={this.state.currentCity} />}
+          {!this.state.isGeoAccepted && !this.state.currentPosition  && <CurrentCity currentCity={this.state.reserveCity} />}
       </div>
   )
 }

@@ -11,10 +11,10 @@
 .circular {
     -webkit-animation: rotate 2s linear infinite;
     animation: rotate 2s linear infinite;
-    height: 44px;
+    height: 60px;
     -webkit-transform-origin: center center;
     transform-origin: center center;
-    width: 44px;
+    width: 60px;
     position: absolute;
     top: 0;
     bottom: 0;
