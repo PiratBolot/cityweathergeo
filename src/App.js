@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import CurrentCity from './components/CurrentCity'
+import CurrentCity from './components/CurrentCity/CurrentCity'
 
 class App extends React.Component {
     constructor(props) {

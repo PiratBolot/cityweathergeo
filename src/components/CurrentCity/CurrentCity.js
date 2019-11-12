@@ -1,7 +1,7 @@
 import React from "react";
-import {getWeatherByCoords, getWeatherByCityName, parseWeatherResponse} from "../WeatherApi";
+import {getWeatherByCoords, getWeatherByCityName, parseWeatherResponse} from "../../WeatherApi";
 import './CurrentCity.css'
-import CircularSpinner from "../preloader/CircularSpinner";
+import CircularSpinner from "../PreLoader/CircularSpinner";
 
 class CurrentCity extends React.Component {
     constructor(props) {
@@ -22,8 +22,12 @@ class CurrentCity extends React.Component {
         }
         let res = data.response;
         let parsedData = parseWeatherResponse(res);
-        // var answer = prompt('question', 'defaultAnswer');
-        this.setState({loaded: true, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
+
+        /* Uncomment if you want to see the preLoader explicitly
+        var answer = prompt('question', 'defaultAnswer');
+        */
+
+        this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
     }
 
 
