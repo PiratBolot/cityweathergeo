@@ -45,7 +45,8 @@ class CurrentCity extends React.Component {
                     </div>
                 </div>
                     :
-                    <div className="image-container-overlay">
+                    <div className="image_container_overlay">
+                        <p className="label">Подождите, данные загружаются</p>
                         <CircularSpinner />
                     </div>
             }

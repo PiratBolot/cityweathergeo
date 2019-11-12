@@ -82,3 +82,10 @@
     font-weight: bold;
     padding: 0px 0px;
 }
+
+.image_container_overlay {
+    width: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+}
