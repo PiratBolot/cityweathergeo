@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import Store from "./components/Store/Store";
+import { Provider } from 'react-redux';
 
 import CurrentCity from './components/CurrentCity/CurrentCity'
 import TrackedCityPanel from "./components/TrackedCityPanel/TrackedCityPanel";
+import configureStore from "./components/Store/Store";
+
+const store = configureStore();
 
 class App extends React.Component {
     constructor(props) {
@@ -57,19 +60,23 @@ class App extends React.Component {
         this.getGeoData();
     };
 
-
     render = () => (
-        <div className="App">
-            <div className="app_header">
-                <div className="app_header_text">Погода здесь</div>
-                <button className="app_geo_update_button" onClick={this.getGeoData}>Обновить геолокацию</button>
-            </div>
-            {this.state.isError && <div className="error_msg">{this.state.errorMsg}</div>}
-            {this.state.currentPosition && <CurrentCity currentPosition={this.state.currentPosition}/>}
-            {!this.state.isGeoAccepted && !this.state.currentPosition &&
-            <CurrentCity currentCity={this.state.reserveCity}/>}
-            <TrackedCityPanel/>
+        <div>
+            <Provider store={store}>
+                <div className="App">
+                    <div className="app_header">
+                        <div className="app_header_text">Погода здесь</div>
+                        <button className="app_geo_update_button" onClick={this.getGeoData}>Обновить геолокацию</button>
+                    </div>
+                    {this.state.isError && <div className="error_msg">{this.state.errorMsg}</div>}
+                    {this.state.currentPosition && <CurrentCity currentPosition={this.state.currentPosition}/>}
+                    {!this.state.isGeoAccepted && !this.state.currentPosition &&
+                    <CurrentCity currentCity={this.state.reserveCity}/>}
+                    <TrackedCityPanel/>
+                </div>
+            </Provider>
         </div>
+
     )
 }
 
