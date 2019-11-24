@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import CurrentCity from './components/CurrentCity/CurrentCity'
 import TrackedCityPanel from "./components/TrackedCityPanel/TrackedCityPanel";
-import configureStore from "./components/Store/Store";
+import configureStore from "./reducers/Store";
 
 const store = configureStore();
 

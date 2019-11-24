@@ -1,7 +1,7 @@
 import React from "react";
 import './TrackedCity.css';
 
-import Store from "../Store/Store";
+import Store from "../../reducers/Store";
 
 import {getWeatherByCityName, parseWeatherResponse} from '../../WeatherApi'
 

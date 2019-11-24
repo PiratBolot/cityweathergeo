@@ -1,7 +1,7 @@
 import React from 'react';
 import './TrackedCityPanel.css';
 
-import Store from "../Store/Store";
+import Store from "../../reducers/Store";
 
 import {getWeatherByCityName} from "../../WeatherApi";
 import TrackedCity from "../TrackedCity/TrackedCity";
@@ -13,11 +13,6 @@ class TrackedCityPanel extends React.Component {
             city: '',
             trackedCities: null
         };
-
-        this.state.trackedCities = Store.getState();
-        Store.subscribe(() => {
-            this.setState({trackedCities: Store.getState()})
-        });
 
         this.addCityHandler = this.addCityHandler.bind(this);
         this.handleChange = this.handleChange.bind(this);
