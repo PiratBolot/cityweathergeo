@@ -9,7 +9,8 @@ let persistentState = _loadState();
 
 let initialState = {
     trackedCities: persistentState,
-    errorMessage: {isError: false, errorMsg: ""}
+    errorMessage: {isError: false, errorMsg: ""},
+    geolocation: {}
 };
 
 export default function configureStore() {

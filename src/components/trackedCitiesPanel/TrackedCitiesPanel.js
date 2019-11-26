@@ -1,13 +1,13 @@
 import React from 'react';
-import './TrackedCityPanel.css';
+import './TrackedCitiesPanel.css';
 
-import {addTrackedCity, setErrorState, resetErrorState} from "../../actions/Actions";
+import {addTrackedCity, setErrorState, resetError} from "../../actions/Actions";
 import {getWeatherByCityName} from "../../WeatherApi";
 import TrackedCity from "../trackedCity/TrackedCity";
 import {connect} from "react-redux";
 
 
-class TrackedCityPanel extends React.Component {
+class TrackedCitiesPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -37,7 +37,7 @@ class TrackedCityPanel extends React.Component {
         let data = await getWeatherByCityName(city);
         if (data.status === "200") {
             if (this.props.trackedCities.indexOf(data.response.name) === -1) {
-                this.props.addFavCity(data.response.name);
+                this.props.addFavoriteCity(data.response.name);
                 this.props.successAddCity();
                 return true;
             } else {
@@ -73,13 +73,13 @@ class TrackedCityPanel extends React.Component {
 
 const mapStateToProps = (state) => ({
     trackedCities: state.trackedCities,
-    errorMessage: {isError: state.errorMessage.isError, errorMsg: state.errorMessage.errorMsg}
+    errorMessage: state.errorMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({
     addFavoriteCity: (cityName) => dispatch(addTrackedCity(cityName)),
-    successAddCity: () => dispatch(resetErrorState()),
+    successAddCity: () => dispatch(resetError()),
     failureAddCity: (msg) => dispatch(setErrorState(msg))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(TrackedCityPanel);
+export default connect(mapStateToProps, mapDispatchToProps)(TrackedCitiesPanel);
