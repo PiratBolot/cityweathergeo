@@ -1,7 +1,7 @@
 import React from "react";
-import {getWeatherByCoords, getWeatherByCityName, parseWeatherResponse} from "../../WeatherApi";
+import {getWeatherByCityName, getWeatherByCoords, parseWeatherResponse} from "../../WeatherApi";
 import './CurrentCity.css'
-import CircularSpinner from "../PreLoader/CircularSpinner";
+import CircularSpinner from "../preLoader/CircularSpinner";
 
 class CurrentCity extends React.Component {
     constructor(props) {
