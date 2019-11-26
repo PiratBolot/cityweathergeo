@@ -1,11 +1,11 @@
 import React from "react";
 import './TrackedCity.css';
 
-import Store from "../../reducers/Store";
-
 import {getWeatherByCityName, parseWeatherResponse} from '../../WeatherApi'
 
-import CircularSpinner from "../PreLoader/CircularSpinner";
+import CircularSpinner from "../preLoader/CircularSpinner";
+import {connect} from "react-redux";
+import {deleteTrackedCity} from "../../actions/Actions";
 
 class TrackedCity extends React.Component {
     constructor(props) {
@@ -27,17 +27,12 @@ class TrackedCity extends React.Component {
         var answer = prompt('question', 'defaultAnswer');
         */
 
-        this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
+        this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name});
     }
 
     removeTrackedCity = async (e) => {
         e.preventDefault();
-        Store.dispatch(
-            {
-                type: "deleteCity",
-                data: this.props.city
-            }
-        )
+        this.props.deleteFavCity(this.state.city);
     };
 
     render = () => (
@@ -78,10 +73,14 @@ class TrackedCity extends React.Component {
                         <CircularSpinner />
                     </div>
             }
-
-
         </div>
     )
 }
 
-export default TrackedCity;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+    deleteFavCity: (city) => dispatch(deleteTrackedCity(city))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackedCity);

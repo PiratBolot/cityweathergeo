@@ -1,17 +1,17 @@
 import React from 'react';
 import './TrackedCityPanel.css';
 
-import Store from "../../reducers/Store";
-
+import {addTrackedCity, setErrorState, setSuccessState} from "../../actions/Actions";
 import {getWeatherByCityName} from "../../WeatherApi";
-import TrackedCity from "../TrackedCity/TrackedCity";
+import TrackedCity from "../trackedCity/TrackedCity";
+import {connect} from "react-redux";
+
 
 class TrackedCityPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             city: '',
-            trackedCities: null
         };
 
         this.addCityHandler = this.addCityHandler.bind(this);
@@ -30,43 +30,21 @@ class TrackedCityPanel extends React.Component {
 
     addTrackedCity = async (city) => {
         if (city === "") {
-            // Глобально
-            Store.dispatch({
-                type: "updateError",
-                data: {isError: true, errorMsg: "Пустой запрос"}
-            });
+            this.props.failureAddCity("Пустой запрос");
             return false;
         }
 
         let data = await getWeatherByCityName(city);
         if (data.status === "200") {
-            if (this.state.trackedCities.indexOf(data.response.name) === -1) {
-                Store.dispatch({
-                    type: "addCity",
-                    data: data.response.name
-                });
-                Store.dispatch({
-                    type: "updateError",
-                    data: {isError: false, errorMsg: ""}
-                });
-                console.log(Store.getState());
+            if (this.props.trackedCities.indexOf(data.response.name) === -1) {
+                this.props.addFavCity(data.response.name);
+                this.props.successAddCity();
                 return true;
             } else {
-                Store.dispatch({
-                    type: "updateError",
-                    data: {isError: true, errorMsg: "Город " + data.response.name + " уже отслеживается"}
-                });
-                console.log(Store.getState());
+                this.props.failureAddCity("Город " + city + " уже отслеживается");
             }
         } else {
-            Store.dispatch({
-                type: "updateError",
-                data: {isError: true, errorMsg:
-                        data.status === "404" ? "Город " + city + " не найден" : "Ошибка API " + data.status
-                }
-
-            });
-            console.log(Store.getState());
+            this.props.failureAddCity(data.status === "404" ? "Город " + city + " не найден" : "Ошибка API " + data.status);
         }
         return false;
     };
@@ -83,8 +61,8 @@ class TrackedCityPanel extends React.Component {
             </div>
             <div className="tracked_city_list">
                 {
-                    this.state.trackedCities &&
-                    this.state.trackedCities.map(
+                    this.props.trackedCities &&
+                    this.props.trackedCities.map(
                         (e) => <TrackedCity key={e} city={e}/>
                     )
                 }
@@ -93,4 +71,15 @@ class TrackedCityPanel extends React.Component {
     );
 }
 
-export default TrackedCityPanel;
+const mapStateToProps = (state) => ({
+    trackedCities: state.trackedCities,
+    errorMessage: {isError: state.errorMessage.isError, errorMsg: state.errorMessage.errorMsg}
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    addFavCity: (cityName) => dispatch(addTrackedCity(cityName)),
+    successAddCity: () => dispatch(setSuccessState()),
+    failureAddCity: (msg) => dispatch(setErrorState(msg))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrackedCityPanel);
