@@ -31,7 +31,7 @@ export function deleteTrackedCity(city) {
     };
 }
 
-function setError(msg) {
+function setUpdateError(msg) {
     return {
         type: errorTypes.UPDATE_ERROR,
         data: {
@@ -43,11 +43,11 @@ function setError(msg) {
 
 export function setErrorState(msg) {
     return function (dispatch, getState) {
-        dispatch(setError(msg));
+        dispatch(setUpdateError(msg));
     };
 }
 
-function setNoError() {
+function resetError() {
     return {
         type: errorTypes.NO_ERROR,
         data: {
@@ -57,8 +57,8 @@ function setNoError() {
     }
 }
 
-export function setSuccessState() {
+export function resetErrorState() {
     return function (dispatch, getState) {
-        dispatch(setNoError());
+        dispatch(resetError());
     };
 }

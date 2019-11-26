@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import {setErrorState, setSuccessState} from "./actions/Actions";
+import {setErrorState, resetErrorState} from "./actions/Actions";
 
 import {Provider} from 'react-redux';
 
@@ -28,7 +28,7 @@ class App extends React.Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    setSuccessState();
+                    resetErrorState();
                     this.setState({currentPosition: position, isGeoAccepted: true, isError: false});
                 },
                 (e) => {

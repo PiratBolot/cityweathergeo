@@ -1,7 +1,7 @@
 import React from 'react';
 import './TrackedCityPanel.css';
 
-import {addTrackedCity, setErrorState, setSuccessState} from "../../actions/Actions";
+import {addTrackedCity, setErrorState, resetErrorState} from "../../actions/Actions";
 import {getWeatherByCityName} from "../../WeatherApi";
 import TrackedCity from "../trackedCity/TrackedCity";
 import {connect} from "react-redux";
@@ -77,8 +77,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addFavCity: (cityName) => dispatch(addTrackedCity(cityName)),
-    successAddCity: () => dispatch(setSuccessState()),
+    addFavoriteCity: (cityName) => dispatch(addTrackedCity(cityName)),
+    successAddCity: () => dispatch(resetErrorState()),
     failureAddCity: (msg) => dispatch(setErrorState(msg))
 });
 
