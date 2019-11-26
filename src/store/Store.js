@@ -1,6 +1,5 @@
 import {applyMiddleware, createStore} from 'redux'
-import {CityReducer} from './trackedCities/CityReducer';
-import globalReducer from "./Reducers";
+import rootReducer from "../reducers/Reducers";
 import thunk from "redux-thunk";
 
 const _loadState = () => JSON.parse(localStorage.state || "[]");
@@ -9,18 +8,18 @@ const _storeState = (state) => localStorage.state = JSON.stringify(state);
 let persistentState = _loadState();
 
 let initialState = {
-    ErrorReducer: null,
-    CityReducer: persistentState
+    trackedCities: persistentState,
+    errorMessage: {isError: false, errorMsg: ""}
 };
 
-export default function configureStore(CityReducer) {
+export default function configureStore() {
     let store = createStore(
-        globalReducer,
+        rootReducer,
         initialState,
         applyMiddleware(thunk)
     );
     store.subscribe(() => {
-        _storeState(store.getState().CityReducer)
+        _storeState(store.getState().trackedCities)
     });
     return store;
 };
