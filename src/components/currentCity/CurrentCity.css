@@ -58,9 +58,8 @@
     justify-content: space-between;
     padding: 5px 10px;
     color: white;
-    background-color: #a7afb1;
+    background-color: #8199A3;
     margin: 5px 0;
-    border-radius: 5px;
 }
 
 .info_label {
@@ -79,7 +78,9 @@
 }
 
 .weather_description {
+    font-size: large;
     text-align: start;
+    color: #435257;
     font-weight: bold;
     padding: 0px 0px;
 }
