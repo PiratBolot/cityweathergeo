@@ -28,20 +28,21 @@
 .add_field {
     padding: 5px 10px;
     margin-right: 10px;
-    background-color: #8199A3;
+    background-color: #D1D5D8;
     border: none;
-    color: white;
+    color: #435257;
 }
 
 .add_field::placeholder {
-    color: blanchedalmond;
+    color: #435257;
+;
 }
 
 .add_button {
     border-radius: 100%;
     height: 40px;
     width: 40px;
-    background-color: #8199A3;
+    background-color: #435257;
     font-size: medium;
     color: white;
     padding: 10px;

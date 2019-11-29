@@ -4,6 +4,7 @@ import './CurrentCity.css'
 import CircularSpinner from "../preLoader/CircularSpinner";
 import {connect} from "react-redux";
 import {getGeolocation} from "../../actions/Actions";
+import WeatherProps from "../weatherProps/WeatherProps";
 
 class CurrentCity extends React.Component {
     constructor(props) {
@@ -53,16 +54,7 @@ class CurrentCity extends React.Component {
             }
             {
                 this.state.parsedWeather ?
-                    <div className="wn_body">
-                        {
-                            this.state.parsedWeather.map((e) =>
-                                <div key={e.key} className="wn_line">
-                                    <div className="info_label">{e.key}</div>
-                                    <div className="info_value">{e.value}</div>
-                                </div>
-                            )
-                        }
-                    </div> : ""
+                    <WeatherProps parsedWeather={this.state.parsedWeather} /> : ""
             }
         </div>
     )
