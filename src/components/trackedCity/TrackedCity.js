@@ -6,7 +6,7 @@ import {getWeatherByCityName, parseWeatherResponse} from '../../WeatherApi'
 import CircularSpinner from "../preLoader/CircularSpinner";
 import WeatherProps from "../weatherProps/WeatherProps";
 import {connect} from "react-redux";
-import {deleteTrackedCity} from "../../actions/Actions";
+import {deleteTrackedCity, resetError, setErrorState} from "../../actions/Actions";
 
 class TrackedCity extends React.Component {
     constructor(props) {
@@ -21,6 +21,14 @@ class TrackedCity extends React.Component {
 
     async componentDidMount() {
         let data = await getWeatherByCityName(this.props.city);
+        if (data.status === "200") {
+            if (this.props.trackedCities.indexOf(this.props.city) !== -1) {
+                this.props.successAddCity();
+            }
+        } else {
+            this.props.failureAddCity(data.status === "404" ? "Город " + this.props.city + " не найден" : "Ошибка API " + data.status);
+            this.props.deleteFavCity(this.props.city);
+        }
         let res = data.response;
         let parsedData = parseWeatherResponse(res);
 
@@ -29,7 +37,7 @@ class TrackedCity extends React.Component {
 
     removeTrackedCity = async (e) => {
         e.preventDefault();
-        this.props.deleteFavCity(this.state.city);
+        this.props.deleteFavCity(this.props.city);
     };
 
     render = () => (
@@ -65,10 +73,14 @@ class TrackedCity extends React.Component {
     )
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+    trackedCities: state.trackedCities,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteFavCity: (city) => dispatch(deleteTrackedCity(city))
+    deleteFavCity: (city) => dispatch(deleteTrackedCity(city)),
+    successAddCity: () => dispatch(resetError()),
+    failureAddCity: (msg) => dispatch(setErrorState(msg))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrackedCity);

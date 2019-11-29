@@ -33,21 +33,9 @@ class TrackedCitiesPanel extends React.Component {
             this.props.failureAddCity("Пустой запрос");
             return false;
         }
-        // TODO: Добавляем город в избранное, лоадер показывается сразу
-        // TODO: Загружаем данные города 1 раз
-        // TODO: 2 раза запрашиваем данные города (здесь и в TrackedCity)
-        let data = await getWeatherByCityName(city);
-        if (data.status === "200") {
-            if (this.props.addFavoriteCity(data.response.name)) {
-                this.props.successAddCity();
-                return true;
-            } else {
-                this.props.failureAddCity("Город " + city + " уже отслеживается");
-            }
-        } else {
-            this.props.failureAddCity(data.status === "404" ? "Город " + city + " не найден" : "Ошибка API " + data.status);
+        if (!this.props.addFavoriteCity(city)) {
+            this.props.failureAddCity("Город " + city + " уже отслеживается");
         }
-        return false;
     };
 
     render = () => (
@@ -74,12 +62,10 @@ class TrackedCitiesPanel extends React.Component {
 
 const mapStateToProps = (state) => ({
     trackedCities: state.trackedCities,
-    errorMessage: state.errorMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({
     addFavoriteCity: (cityName) => dispatch(addTrackedCity(cityName)),
-    successAddCity: () => dispatch(resetError()),
     failureAddCity: (msg) => dispatch(setErrorState(msg))
 });
 
