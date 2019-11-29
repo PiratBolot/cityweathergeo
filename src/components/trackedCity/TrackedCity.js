@@ -24,10 +24,6 @@ class TrackedCity extends React.Component {
         let res = data.response;
         let parsedData = parseWeatherResponse(res);
 
-        /* Uncomment if you want to see the preLoader explicitly
-        var answer = prompt('question', 'defaultAnswer');
-        */
-
         this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name});
     }
 

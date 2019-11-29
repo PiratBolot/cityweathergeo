@@ -25,7 +25,7 @@ class TrackedCitiesPanel extends React.Component {
     addCityHandler = async (e) => {
         e.preventDefault();
         await this.addTrackedCity(this.state.city);
-        this.setState({city: ""});
+        this.setState({city: ''});
     };
 
     addTrackedCity = async (city) => {
@@ -33,11 +33,12 @@ class TrackedCitiesPanel extends React.Component {
             this.props.failureAddCity("Пустой запрос");
             return false;
         }
-
+        // TODO: Добавляем город в избранное, лоадер показывается сразу
+        // TODO: Загружаем данные города 1 раз
+        // TODO: 2 раза запрашиваем данные города (здесь и в TrackedCity)
         let data = await getWeatherByCityName(city);
         if (data.status === "200") {
-            if (this.props.trackedCities.indexOf(data.response.name) === -1) {
-                this.props.addFavoriteCity(data.response.name);
+            if (this.props.addFavoriteCity(data.response.name)) {
                 this.props.successAddCity();
                 return true;
             } else {
