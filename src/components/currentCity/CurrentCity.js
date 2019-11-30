@@ -1,10 +1,11 @@
 import React from "react";
 import {getWeatherByCoords, parseWeatherResponse} from "../../WeatherApi";
 import './CurrentCity.css'
-import CircularSpinner from "../preLoader/CircularSpinner";
 import {connect} from "react-redux";
 import {getGeolocation} from "../../actions/Actions";
 import WeatherProps from "../weatherProps/WeatherProps";
+import CityProps from "../cityProps/CityProps";
+import Loader from "../preLoader/Loader";
 
 class CurrentCity extends React.Component {
     constructor(props) {
@@ -33,24 +34,9 @@ class CurrentCity extends React.Component {
         <div className="current_city">
             {
                 this.state.loaded ?
-                    <div className="weather_frame_now">
-                        <div className="city_name">{this.state.city}</div>
-                        <div className="date">{new Date().toDateString()}</div>
-                        <div className="weather_now">
-                            <div className="temperature_c">
-                                <span>{(this.state.data.main.temp - 273.14).toFixed(1) + "°C"}</span>
-                            </div>
-                            <img className="weather_icon" src={"http://openweathermap.org/img/wn/" +
-                            this.state.data.weather[0].icon + "@2x.png"} alt=""
-                            />
-                            <div className="weather_description">{this.state.data.weather[0].description}</div>
-                        </div>
-                    </div>
+                    <CityProps isCurrentCity={true} city={this.state.city} data={this.state.data}/>
                     :
-                    <div className="image_container_overlay">
-                        <p className="label">Подождите, данные загружаются</p>
-                        <CircularSpinner/>
-                    </div>
+                    <Loader />
             }
             {
                 this.state.parsedWeather ?

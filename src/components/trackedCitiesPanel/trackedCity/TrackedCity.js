@@ -1,13 +1,12 @@
 import React from "react";
 import './TrackedCity.css';
 
-import {getWeatherByCityName, parseWeatherResponse} from '../../WeatherApi'
-
-import CircularSpinner from "../preLoader/CircularSpinner";
-import WeatherProps from "../weatherProps/WeatherProps";
+import {getWeatherByCityName, parseWeatherResponse} from '../../../WeatherApi'
+import WeatherProps from "../../weatherProps/WeatherProps";
 import {connect} from "react-redux";
-import {deleteTrackedCity, resetError, setErrorState} from "../../actions/Actions";
-import RemoveCityButton from "../removeCityButton/RemoveCityButton";
+import {deleteTrackedCity, resetError, setErrorState} from "../../../actions/Actions";
+import CityProps from "../../cityProps/CityProps";
+import Loader from "../../preLoader/Loader";
 
 class TrackedCity extends React.Component {
     constructor(props) {
@@ -36,32 +35,12 @@ class TrackedCity extends React.Component {
 
     render = () => (
         <div className="weather_frame">
-            <div className="wf_header">
-                <div className="city_name">
-                    {this.props.city}
-                </div>
-                {
-                    this.state.data ?
-                        <div className="temperature_c">
-                            <span>{(this.state.data.main.temp - 273.14).toFixed(1) + "°C"}</span>
-                        </div> : ""
-                }
-                {
-                    this.state.data ?
-                        <img className="weather_icon" src={"http://openweathermap.org/img/wn/" +
-                        this.state.data.weather[0].icon + "@2x.png"} alt=""
-                        /> : ""
-                }
-                <RemoveCityButton city={this.props.city}/>
-            </div>
+            <CityProps isCurrentCity={false} city={this.props.city} data={this.state.data} />
             {
                 this.state.loaded ?
                     <WeatherProps parsedWeather={this.state.parsedWeather} />
                     :
-                    <div className="image_container_overlay">
-                        <p className="label">Подождите, данные загружаются</p>
-                        <CircularSpinner />
-                    </div>
+                    <Loader />
             }
         </div>
     )
