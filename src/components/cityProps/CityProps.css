@@ -1,0 +1,32 @@
+.city_name {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 5px;
+    color: #435257;
+}
+
+.weather_frame_now {
+    flex-grow: 1;
+    padding: 0px 7px;
+}
+
+.date {
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.weather_now {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 15px 10px 10px;
+}
+
+.weather_description {
+    font-size: large;
+    text-align: start;
+    color: #435257;
+    font-weight: bold;
+    padding: 0px 0px;
+}

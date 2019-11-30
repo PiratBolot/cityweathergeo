@@ -1,6 +1,6 @@
 import React from 'react'
 import './RemoveCityButton.css';
-import {deleteTrackedCity} from "../../actions/Actions";
+import {deleteTrackedCity} from "../../../actions/Actions";
 import {connect} from "react-redux";
 
 class RemoveCityButton extends React.Component {
