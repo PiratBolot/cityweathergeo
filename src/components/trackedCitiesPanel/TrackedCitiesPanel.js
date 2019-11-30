@@ -1,8 +1,7 @@
 import React from 'react';
 import './TrackedCitiesPanel.css';
 
-import {addTrackedCity, setErrorState, resetError} from "../../actions/Actions";
-import {getWeatherByCityName} from "../../WeatherApi";
+import {addTrackedCity, setErrorState} from "../../actions/Actions";
 import TrackedCity from "../trackedCity/TrackedCity";
 import {connect} from "react-redux";
 

@@ -7,6 +7,7 @@ import CircularSpinner from "../preLoader/CircularSpinner";
 import WeatherProps from "../weatherProps/WeatherProps";
 import {connect} from "react-redux";
 import {deleteTrackedCity, resetError, setErrorState} from "../../actions/Actions";
+import RemoveCityButton from "../removeCityButton/RemoveCityButton";
 
 class TrackedCity extends React.Component {
     constructor(props) {
@@ -15,8 +16,6 @@ class TrackedCity extends React.Component {
             city: props.city,
             loaded: false
         };
-
-        this.removeTrackedCity = this.removeTrackedCity.bind(this);
     }
 
     async componentDidMount() {
@@ -27,7 +26,7 @@ class TrackedCity extends React.Component {
             }
         } else {
             this.props.failureAddCity(data.status === "404" ? "Город " + this.props.city + " не найден" : "Ошибка API " + data.status);
-            this.props.deleteFavCity(this.props.city);
+            this.props.deleteCity(this.props.city);
         }
         let res = data.response;
         let parsedData = parseWeatherResponse(res);
@@ -35,16 +34,11 @@ class TrackedCity extends React.Component {
         this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name});
     }
 
-    removeTrackedCity = async (e) => {
-        e.preventDefault();
-        this.props.deleteFavCity(this.props.city);
-    };
-
     render = () => (
         <div className="weather_frame">
             <div className="wf_header">
                 <div className="city_name">
-                    {this.state.city}
+                    {this.props.city}
                 </div>
                 {
                     this.state.data ?
@@ -58,7 +52,7 @@ class TrackedCity extends React.Component {
                         this.state.data.weather[0].icon + "@2x.png"} alt=""
                         /> : ""
                 }
-                <button className="remove_city_button" onClick={this.removeTrackedCity}>X</button>
+                <RemoveCityButton city={this.props.city}/>
             </div>
             {
                 this.state.loaded ?
@@ -78,7 +72,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    deleteFavCity: (city) => dispatch(deleteTrackedCity(city)),
+    deleteCity: (city) => dispatch(deleteTrackedCity(city)),
     successAddCity: () => dispatch(resetError()),
     failureAddCity: (msg) => dispatch(setErrorState(msg))
 });
