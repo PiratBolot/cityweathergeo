@@ -21,6 +21,7 @@ class CurrentCity extends React.Component {
             let data = await getWeatherByCoords(this.props.geolocation.currentPosition);
             let res = data.response;
             let parsedData = parseWeatherResponse(res);
+
             this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
         }
     }
