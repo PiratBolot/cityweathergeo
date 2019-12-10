@@ -12,19 +12,20 @@ import HeaderMenu from "./components/headerMenu/HeaderMenu";
 const store = configureStore();
 
 class App extends React.Component {
-    render = () => (
-        <div>
-            <Provider store={store}>
-                <div className="App">
-                    <HeaderMenu />
-                    <ErrorLine />
-                    <CurrentCity />
-                    <TrackedCitiesPanel />
-                </div>
-            </Provider>
-        </div>
-
-    )
+    render() {
+        return (
+            <div>
+                <Provider store={store}>
+                    <div className="App">
+                        <HeaderMenu/>
+                        <ErrorLine/>
+                        <CurrentCity/>
+                        <TrackedCitiesPanel/>
+                    </div>
+                </Provider>
+            </div>
+        )
+    }
 }
 
 export default App;

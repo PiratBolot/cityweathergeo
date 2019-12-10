@@ -9,14 +9,16 @@ class RemoveCityButton extends React.Component {
         this.removeTrackedCity = this.removeTrackedCity.bind(this);
     }
 
-    removeTrackedCity = async (e) => {
+    async removeTrackedCity(e) {
         e.preventDefault();
         this.props.deleteCity(this.props.city);
     };
 
-    render = () => (
-        <button className="remove_city_button" onClick={this.removeTrackedCity}>X</button>
-    )
+    render() {
+        return (
+            <button className="remove_city_button" onClick={this.removeTrackedCity}>X</button>
+        )
+    }
 }
 
 const mapDispatchToProps = (dispatch) => ({

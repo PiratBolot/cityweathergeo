@@ -33,17 +33,19 @@ class TrackedCity extends React.Component {
         this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name});
     }
 
-    render = () => (
-        <div className="weather_frame">
-            <CityProps isCurrentCity={false} city={this.props.city} data={this.state.data} />
-            {
-                this.state.loaded ?
-                    <WeatherProps parsedWeather={this.state.parsedWeather} />
-                    :
-                    <Loader />
-            }
-        </div>
-    )
+    render() {
+        return (
+            <div className="weather_frame">
+                <CityProps isCurrentCity={false} city={this.props.city} data={this.state.data}/>
+                {
+                    this.state.loaded ?
+                        <WeatherProps parsedWeather={this.state.parsedWeather}/>
+                        :
+                        <Loader/>
+                }
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({

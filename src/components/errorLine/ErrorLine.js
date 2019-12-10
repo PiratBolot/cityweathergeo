@@ -3,13 +3,15 @@ import {connect} from "react-redux";
 import './ErrorLine.css'
 
 class ErrorLine extends React.Component {
-    render = () => (
-        <div>
-            { this.props.errorMessage.isError &&
-                    <div className="error_msg">{this.props.errorMessage.errorMsg}</div>
-            }
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                {this.props.errorMessage.isError &&
+                <div className="error_msg">{this.props.errorMessage.errorMsg}</div>
+                }
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({

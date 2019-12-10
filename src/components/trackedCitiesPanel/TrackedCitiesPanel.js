@@ -17,11 +17,11 @@ class TrackedCitiesPanel extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (e) => {
+    handleChange(e) {
         this.setState({city: e.target.value});
     };
 
-    addCityHandler = async (e) => {
+    async addCityHandler(e) {
         e.preventDefault();
         await this.addTrackedCity(this.state.city);
         this.setState({city: ''});
@@ -37,26 +37,28 @@ class TrackedCitiesPanel extends React.Component {
         }
     };
 
-    render = () => (
-        <div className="tracked_city">
-            <div className="tracked_city_panel">
-                <div className="panel_text">Избранное</div>
-                <form className="add_form" onSubmit={this.addCityHandler}>
-                    <input type="text" value={this.state.city} className="add_field"
-                           onChange={this.handleChange} placeholder="Добавить новый город"/>
-                    <input type="submit" className="add_button" value="+"/>
-                </form>
+    render() {
+        return (
+            <div className="tracked_city">
+                <div className="tracked_city_panel">
+                    <div className="panel_text">Избранное</div>
+                    <form className="add_form" onSubmit={this.addCityHandler}>
+                        <input type="text" value={this.state.city} className="add_field"
+                               onChange={this.handleChange} placeholder="Добавить новый город"/>
+                        <input type="submit" className="add_button" value="+"/>
+                    </form>
+                </div>
+                <div className="tracked_city_list">
+                    {
+                        this.props.trackedCities &&
+                        this.props.trackedCities.map(
+                            (e) => <TrackedCity key={e} city={e}/>
+                        )
+                    }
+                </div>
             </div>
-            <div className="tracked_city_list">
-                {
-                    this.props.trackedCities &&
-                    this.props.trackedCities.map(
-                        (e) => <TrackedCity key={e} city={e}/>
-                    )
-                }
-            </div>
-        </div>
-    );
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({

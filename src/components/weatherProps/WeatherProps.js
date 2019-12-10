@@ -2,7 +2,8 @@ import React from "react";
 import './WeatherProps.css'
 
 class WeatherProps extends React.Component {
-    render = () => (
+    render() {
+        return (
         <div className="wn_body">
             {
                 this.props.parsedWeather.map((e) =>
@@ -13,7 +14,8 @@ class WeatherProps extends React.Component {
                 )
             }
         </div>
-    )
+        )
+    }
 }
 
 export default WeatherProps;

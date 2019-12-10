@@ -22,7 +22,12 @@ class CurrentCity extends React.Component {
             let res = data.response;
             let parsedData = parseWeatherResponse(res);
 
-            this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name + ", " + res.sys.country});
+            this.setState({
+                loaded: !!res,
+                data: res,
+                parsedWeather: parsedData,
+                city: res.name + ", " + res.sys.country
+            });
         }
     }
 
@@ -31,20 +36,22 @@ class CurrentCity extends React.Component {
     }
 
 
-    render = () => (
-        <div className="current_city">
-            {
-                this.state.loaded ?
-                    <CityProps isCurrentCity={true} city={this.state.city} data={this.state.data}/>
-                    :
-                    <Loader />
-            }
-            {
-                this.state.parsedWeather ?
-                    <WeatherProps parsedWeather={this.state.parsedWeather} /> : ""
-            }
-        </div>
-    )
+    render() {
+        return (
+            <div className="current_city">
+                {
+                    this.state.loaded ?
+                        <CityProps isCurrentCity={true} city={this.state.city} data={this.state.data}/>
+                        :
+                        <Loader/>
+                }
+                {
+                    this.state.parsedWeather ?
+                        <WeatherProps parsedWeather={this.state.parsedWeather}/> : ""
+                }
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({
