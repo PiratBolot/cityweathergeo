@@ -13,6 +13,9 @@
     "seamless-immutable": "^7.1.4"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "redux-devtools": "^3.5.0"
   },
   "scripts": {
