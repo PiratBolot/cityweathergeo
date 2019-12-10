@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Temperature should render correctly 1`] = `
+<div
+  className="temperature_c"
+>
+  <span>
+    3.0°C
+  </span>
+</div>
+`;

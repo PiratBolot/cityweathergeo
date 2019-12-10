@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Current City +++capturing Snapshot of CurrentCity 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(CurrentCity)>
+    <CurrentCity
+      geolocation={Object {}}
+      getLocation={[Function]}
+    >
+      <div
+        className="current_city"
+      >
+        <Loader>
+          <div
+            className="image_container_overlay"
+          >
+            <p
+              className="label"
+            >
+              Подождите, данные загружаются
+            </p>
+            <CircularSpinner>
+              <div
+                className="loader"
+              >
+                <svg
+                  className="circular"
+                  viewBox="25 25 50 50"
+                >
+                  <circle
+                    className="path"
+                    cx="50"
+                    cy="50"
+                    fill="none"
+                    r="20"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
+                  />
+                </svg>
+              </div>
+            </CircularSpinner>
+          </div>
+        </Loader>
+      </div>
+    </CurrentCity>
+  </Connect(CurrentCity)>
+</Provider>
+`;

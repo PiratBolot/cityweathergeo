@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`City Properties should render Current City properties correctly 1`] = `
+<div>
+  <div
+    className="weather_frame_now"
+  >
+    <div
+      className="city_name"
+    >
+      Syktyvkar
+    </div>
+    <div
+      className="date"
+    >
+      Wed Dec 11 2019
+    </div>
+    <div
+      className="weather_now"
+    >
+      <Temperature
+        temp={276.15}
+      />
+      <WeatherIcon
+        icon="04n"
+      />
+      <div
+        className="weather_description"
+      >
+        пасмурно
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`City Properties should render Tracked City properties correctly 1`] = `
+<div>
+  <div
+    className="weather_now"
+  >
+    <div
+      className="city_name"
+    >
+      Moscow
+    </div>
+    <Temperature
+      temp={276.15}
+    />
+    <WeatherIcon
+      icon="04n"
+    />
+    <Connect(RemoveCityButton)
+      city="Moscow"
+    />
+  </div>
+</div>
+`;

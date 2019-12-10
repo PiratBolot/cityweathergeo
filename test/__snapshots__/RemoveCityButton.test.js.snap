@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Remove City Button +++capturing Snapshot of RemoveCityButton 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(RemoveCityButton)
+    city="Syktyvkar"
+  >
+    <RemoveCityButton
+      city="Syktyvkar"
+      deleteCity={[Function]}
+    >
+      <button
+        className="remove_city_button"
+        onClick={[Function]}
+      >
+        X
+      </button>
+    </RemoveCityButton>
+  </Connect(RemoveCityButton)>
+</Provider>
+`;

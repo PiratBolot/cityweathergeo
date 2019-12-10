@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Menu +++capturing Snapshot of HeaderMenu 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(HeaderMenu)>
+    <HeaderMenu
+      getLocation={[Function]}
+    >
+      <div
+        className="app_header"
+      >
+        <div
+          className="app_header_text"
+        >
+          Погода здесь
+        </div>
+        <button
+          className="app_geo_update_button"
+          onClick={[Function]}
+        >
+          Обновить геолокацию
+        </button>
+      </div>
+    </HeaderMenu>
+  </Connect(HeaderMenu)>
+</Provider>
+`;

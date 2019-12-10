@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather Properties should render correctly 1`] = `
+<div
+  className="wn_body"
+>
+  <div
+    className="wn_line"
+    key="Ветер"
+  >
+    <div
+      className="info_label"
+    >
+      Ветер
+    </div>
+    <div
+      className="info_value"
+    >
+      3 м/с, Ю-Ю-З
+    </div>
+  </div>
+  <div
+    className="wn_line"
+    key="Давление"
+  >
+    <div
+      className="info_label"
+    >
+      Давление
+    </div>
+    <div
+      className="info_value"
+    >
+      1005 hPa
+    </div>
+  </div>
+  <div
+    className="wn_line"
+    key="Влажность"
+  >
+    <div
+      className="info_label"
+    >
+      Влажность
+    </div>
+    <div
+      className="info_value"
+    >
+      86 %
+    </div>
+  </div>
+  <div
+    className="wn_line"
+    key="Координаты"
+  >
+    <div
+      className="info_label"
+    >
+      Координаты
+    </div>
+    <div
+      className="info_value"
+    >
+      [61.67, 50.82]
+    </div>
+  </div>
+</div>
+`;
