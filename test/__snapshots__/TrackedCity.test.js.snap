@@ -1,100 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tracked City +++capturing Snapshot of TrackedCity 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
+<ContextProvider
+  value={null}
 >
-  <Connect(TrackedCity)
+  <TrackedCity
     city="Syktyvkar"
-  >
-    <TrackedCity
-      city="Syktyvkar"
-      deleteCity={[Function]}
-      failureAddCity={[Function]}
-      successAddCity={[Function]}
-      trackedCities={
-        Array [
-          "Syktyvkar",
-          "Moscow",
-          "Kiev",
-        ]
+    deleteCity={[Function]}
+    failureAddCity={[Function]}
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
       }
-    >
-      <div
-        className="weather_frame"
-      >
-        <CityProps
-          city="Syktyvkar"
-          isCurrentCity={false}
-        >
-          <div>
-            <div
-              className="weather_now"
-            >
-              <div
-                className="city_name"
-              >
-                Syktyvkar
-              </div>
-              <Connect(RemoveCityButton)
-                city="Syktyvkar"
-              >
-                <RemoveCityButton
-                  city="Syktyvkar"
-                  deleteCity={[Function]}
-                >
-                  <button
-                    className="remove_city_button"
-                    onClick={[Function]}
-                  >
-                    X
-                  </button>
-                </RemoveCityButton>
-              </Connect(RemoveCityButton)>
-            </div>
-          </div>
-        </CityProps>
-        <Loader>
-          <div
-            className="image_container_overlay"
-          >
-            <p
-              className="label"
-            >
-              Подождите, данные загружаются
-            </p>
-            <CircularSpinner>
-              <div
-                className="loader"
-              >
-                <svg
-                  className="circular"
-                  viewBox="25 25 50 50"
-                >
-                  <circle
-                    className="path"
-                    cx="50"
-                    cy="50"
-                    fill="none"
-                    r="20"
-                    strokeMiterlimit="10"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-            </CircularSpinner>
-          </div>
-        </Loader>
-      </div>
-    </TrackedCity>
-  </Connect(TrackedCity)>
-</Provider>
+    }
+    successAddCity={[Function]}
+    trackedCities={
+      Array [
+        "Syktyvkar",
+        "Moscow",
+        "Kiev",
+      ]
+    }
+  />
+</ContextProvider>
 `;

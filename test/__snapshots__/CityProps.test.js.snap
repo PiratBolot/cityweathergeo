@@ -13,7 +13,7 @@ exports[`City Properties should render Current City properties correctly 1`] = `
     <div
       className="date"
     >
-      Wed Dec 11 2019
+      Thu Dec 12 2019
     </div>
     <div
       className="weather_now"

@@ -1,35 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Error Line +++capturing Snapshot of ErrorLine 1`] = `
-<Provider
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
+<ContextProvider
+  value={null}
 >
-  <Connect(ErrorLine)>
-    <ErrorLine
-      dispatch={[Function]}
-      errorMessage={
-        Object {
-          "errorMsg": "Tests crushed",
-          "isError": true,
-        }
+  <ErrorLine
+    dispatch={[Function]}
+    errorMessage={
+      Object {
+        "errorMsg": "Tests crushed",
+        "isError": true,
       }
-    >
-      <div>
-        <div
-          className="error_msg"
-        >
-          Tests crushed
-        </div>
-      </div>
-    </ErrorLine>
-  </Connect(ErrorLine)>
-</Provider>
+    }
+    store={
+      Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      }
+    }
+  />
+</ContextProvider>
 `;

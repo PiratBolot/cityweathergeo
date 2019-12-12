@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from '../enzyme/enzyme';
+import {shallow} from '../enzyme/enzyme';
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import rootReducer from "../src/reducers/Reducers";
@@ -13,10 +13,10 @@ describe('Current City', () => {
         errorMessage: {isError: false, errorMsg: ""},
         geolocation: {}
     };
-    let store,wrapper;
+    let store, wrapper;
     beforeEach(()=>{
         store = createStore(rootReducer, initialState, applyMiddleware(thunk));
-        wrapper = mount( <Provider store={store}><CurrentCity /></Provider> );
+        wrapper = shallow(<CurrentCity store={store}/>);
     })
     it('+++capturing Snapshot of CurrentCity', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
