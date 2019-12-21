@@ -12,6 +12,7 @@ const toJson = (promise) => (
     ).then(
         async (response) => {
             let json = await response.json();
+            console.log(json);
             return {status: json.cod.toString(), response: json};
         }
     )
@@ -19,13 +20,13 @@ const toJson = (promise) => (
 
 const getWeatherByCityName = async (city) => (
     toJson(
-        fetch("http://localhost:8080/weather?city=" + city)
+        fetch("http://localhost:3001/weather?city=" + city)
     )
 );
 
 const getWeatherByCoords = async (coords) => (
     toJson(
-        fetch("http://localhost:8080/weather/coordinates?lat=" + coords.latitude + "&lon=" + coords.longitude)
+        fetch("http://localhost:3001/weather/coordinates?lat=" + coords.latitude + "&lon=" + coords.longitude)
     )
 );
 

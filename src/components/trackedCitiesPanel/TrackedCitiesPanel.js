@@ -32,7 +32,7 @@ class TrackedCitiesPanel extends React.Component {
             this.props.failureAddCity("Пустой запрос");
             return false;
         }
-        if (!this.props.addFavoriteCity(city)) {
+        if (!this.props.addFavoriteCity(city.toLowerCase())) {
             this.props.failureAddCity("Город " + city + " уже отслеживается");
         }
     };
