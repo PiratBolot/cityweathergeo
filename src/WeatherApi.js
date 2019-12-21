@@ -1,4 +1,3 @@
-const API_KEY = "5c421a898af8f8f0d9a04eb07a32545d";
 const COMPASS_POINTS = ["Северный", "С-С-В", "Северо-Восточный", "В-С-В", "Восточный", "В-Ю-В", "Юго-Восточный",
     "Ю-Ю-В", "Южный", "Ю-Ю-З", "Юго-Западный", "З-Ю-З", "Западный", "З-С-З", "Северо-Западный", "С-С-З"];
 
@@ -20,16 +19,13 @@ const toJson = (promise) => (
 
 const getWeatherByCityName = async (city) => (
     toJson(
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&lang=ru")
+        fetch("http://localhost:8080/weather?city=" + city)
     )
 );
 
 const getWeatherByCoords = async (coords) => (
     toJson(
-        fetch(
-        "https://api.openweathermap.org/data/2.5/weather?lat=" + coords.latitude
-        + "&lon=" + coords.longitude + "&appid=" + API_KEY + "&lang=ru"
-        )
+        fetch("http://localhost:8080/weather/coordinates?lat=" + coords.latitude + "&lon=" + coords.longitude)
     )
 );
 
