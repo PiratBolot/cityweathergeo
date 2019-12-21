@@ -8,6 +8,8 @@ const trackedCities = (state = [], action) => {
             return state.concat([action.city]);
         case actionTypes.DELETE_CITY:
             return state.filter(el => el !== action.city);
+        case actionTypes.FETCH_CITIES:
+            return [...action.cities];
         default:
             return state;
     }
