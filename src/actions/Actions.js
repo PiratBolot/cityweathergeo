@@ -13,6 +13,7 @@ export function addTrackedCity(city) {
         if (getState().trackedCities.indexOf(city) !== -1) {
             return false;
         }
+        addCityServer(city);
         dispatch(addCity(city));
         return true;
     }
@@ -27,6 +28,7 @@ function deleteCity(city) {
 
 export function deleteTrackedCity(city) {
     return function (dispatch, getState) {
+        deleteCityServer(city);
         return dispatch(deleteCity(city));
     };
 }
@@ -91,4 +93,44 @@ export function getGeolocation() {
                 }
             }
         )
+}
+
+export function fetchFavouriteCities(cities) {
+    return {
+        type: actionTypes.FETCH_CITIES,
+        cities
+    }
+}
+
+export async function serverFetchFavouriteCities() {
+    return await fetch("http://localhost:3001/favourites").then(
+        async (res) => {
+            const json = await res.json();
+            return json.map((el) => el.name);
+        }
+    );
+}
+
+function addCityServer(city) {
+    fetch("http://localhost:3001/favourites",
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: city})
+        }
+    )
+}
+
+function deleteCityServer(city) {
+    fetch("http://localhost:3001/favourites",
+        {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: city})
+        }
+    )
 }
