@@ -7,12 +7,10 @@ const toJson = (promise) => (
             return response;
         },
         (e) => {
-            console.log("Получили битые данные");
         }
     ).then(
         async (response) => {
             let json = await response.json();
-            console.log(json);
             return {status: json.cod.toString(), response: json};
         }
     )

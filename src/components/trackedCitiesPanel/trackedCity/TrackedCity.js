@@ -20,17 +20,15 @@ class TrackedCity extends React.Component {
     async componentDidMount() {
         let data = await getWeatherByCityName(this.props.city);
         if (data.status === "200") {
-            if (this.props.trackedCities.indexOf(this.props.city) !== -1) {
-                this.props.successAddCity();
-            }
+            this.props.successAddCity();
+            let res = data.response;
+            let parsedData = parseWeatherResponse(res);
+            this.setState({loaded: true, data: res, parsedWeather: parsedData, city: res.name});
         } else {
+            this.setState({loaded: false});
             this.props.failureAddCity(data.status === "404" ? "Город " + this.props.city + " не найден" : "Ошибка API " + data.status);
             this.props.deleteCity(this.props.city);
         }
-        let res = data.response;
-        let parsedData = parseWeatherResponse(res);
-
-        this.setState({loaded: !!res, data: res, parsedWeather: parsedData, city: res.name});
     }
 
     render() {
